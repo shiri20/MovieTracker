@@ -1,0 +1,20 @@
+
+
+
+<div class="list-group" *ngFor="let i of movieService.favorites$ | async  ">
+         
+    <div class="list-group-item d-flex p-2">
+
+        <img class="" src="{{i.Poster}}" height="128px"/>
+
+        <div>
+          <h2 class="p-1">{{i.Title}} </h2>      
+          <div class="p-1">{{i.Year}} </div>  
+          <a  [routerLink]="['/movie-detail', i.imdbID]"><button class="btn btn-primary m-1">Detail</button></a>
+
+        </div>
+        <i   [ngClass]="movieService.isFavorite(i) ? 'bi-heart-fill' : 'bi-heart'" (click)="movieService.toggle(i)"></i>
+     
+    </div>
+
+</div>
